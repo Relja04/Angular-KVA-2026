@@ -1,0 +1,22 @@
+header{
+    background-color: black;
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+}
+li{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+img{
+    width: 9.5em;
+    height: 5em;
+    margin:10px 0 0 10px
+}
