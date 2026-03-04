@@ -1,45 +1,31 @@
 import { Routes } from '@angular/router';
+import { MainLayout } from './layouts/main-layout/main-layout';
+import { AuthLayout } from "./layouts/auth-layout/auth-layout"
+import { Home } from "./home/home"
+import { About } from "./about/about"
+import { Contact } from "./contact/contact"
+import { Faq } from "./faq/faq"
+import { Login } from './login/login';
+import { Register } from "./register/register"
 
 export const routes: Routes = [
     {
         path: "",
-        pathMatch: "full",
-        loadComponent: () => {
-            return import("./home/home").then(
-                m => m.Home
-            )
-        }
+        component:MainLayout,
+        children:[
+            {path:"",component:Home},
+            {path:"about",component:About},
+            {path:"contact",component:Contact},
+            {path:"faq",component:Faq}
+        ]
     },
     {
-        path:"about",
-        loadComponent:()=>{
-            return import("./about/about").then(
-                a=>a.About
-            )
-        }
-    },
-    {
-        path:"contact",
-        loadComponent:()=>{
-            return import("./contact/contact").then(
-                c=>c.Contact
-            )
-        }
-    },
-    {
-        path:"faq",
-        loadComponent:()=>{
-            return import("./faq/faq").then(
-                f=>f.Faq
-            )
-        }
-    },
-    {
-        path:"login",
-        loadComponent:()=>{
-            return import("./login/login").then(
-                l=>l.Login
-            )
-        }
+        path:"",
+        component:AuthLayout,
+        children:[
+            {path: "login",component:Login},
+            {path:"register",component:Register}
+        ]
+
     }
 ];
