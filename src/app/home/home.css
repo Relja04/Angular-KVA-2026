@@ -39,6 +39,9 @@
     margin: 30px 20px 10px 20px;
     box-shadow: 17px 18px 33px -2px rgba(0, 0, 0, 0.55);
 }
+.igracka p{
+    font-size: 18px;
+}
 
 .igracka img {
     width: 180px;
@@ -61,10 +64,18 @@
     font-size: 15px;
     font-weight: bold;
     margin-top: 10px;
+    transition: .3s;
 }
-.igracka button:nth-of-type(2){
+
+.igracka button:hover {
+    width: 195px;
+    transition: .3s;
+}
+
+.igracka button:nth-of-type(2) {
     background-color: rgb(189, 123, 0);
 }
+
 
 .overlay {
     position: fixed;
@@ -86,11 +97,28 @@
     width: 400px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     position: relative;
+    font-size: 17px;
     animation: scaleIn 0.3s ease;
 }
-#opis{
+.detail h2{
+    padding: 5px;
+}
+.detail p{
+    padding: 3px;
+}
+.detail button{
+    all:unset;
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    float: right;
+}
+#opis {
     width: 45%;
 }
+
 .detail img {
     width: 200px;
     height: 200px;
