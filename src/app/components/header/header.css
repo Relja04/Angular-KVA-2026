@@ -12,11 +12,17 @@ ul{
 }
 li{
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     margin: 0 10px;
 }
+a{
+    font-weight: 800;
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+}
 img{
-    width: 9.5em;
-    height: 5em;
+    width: 5.5em;
+    height: 3.5em;
     margin:10px 0 0 10px
 }
