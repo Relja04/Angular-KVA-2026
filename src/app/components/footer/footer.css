@@ -1,0 +1,12 @@
+footer{
+    background-color: #333333;
+    width: 100%;
+    height: fit-content;
+    clear: both;
+    position: relative;
+}
+footer p{
+    text-align: center;
+    line-height: 3em;
+    color: white;
+}

@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="container">
+    @for(t of toys(); track $index){
+    <div class="igracka">
+        <img [src]="image+t.imageUrl">
+        <h3>{{t.name}}</h3>
+        <p>{{t.price}} Рсд</p>
+        <p>TODO recenzija</p>
+        <button>Rezerviši</button>
+        <button (click)="openDetails(t)">Detalji</button>
+    </div>
+    }
+</div>
+@if (selectedToy) {
+<div class="overlay" (click)="closeDetails()">
+    <div class="detail" (click)="$event.stopPropagation()">
+        <h2>{{ selectedToy.name }}</h2>
+        <img [src]="image + selectedToy.imageUrl">
+        <p>Cena: {{ selectedToy.price }} Рсд</p>
+        <p>Tip: {{selectedToy.type.name}}</p>
+        <p id="opis">Opis: {{selectedToy.description + " " + selectedToy.ageGroup.description}}</p>
+        <p>Uzrast: {{selectedToy.ageGroup.name + " godina"}}</p>
+        <p>Ciljna grupa: {{selectedToy.targetGroup}}</p>
+        <p>Datum proizvodnje: {{selectedToy.productionDate}}</p>
+        <button (click)="closeDetails()">Zatvori</button>
+    </div>
+</div>
+}
