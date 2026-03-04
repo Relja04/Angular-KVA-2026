@@ -14,15 +14,26 @@ li{
     display: flex;
     align-items: flex-end;
     margin: 0 10px;
+    height: 85px;
 }
 a{
-    font-weight: 800;
+    font-weight: 600;
     font-size: 25px;
     text-decoration: none;
     color: white;
+    padding-bottom: 5px;
 }
 img{
     width: 5.5em;
     height: 3.5em;
     margin:10px 0 0 10px
+}
+#login{
+    justify-content: center;
+    align-items: center;
+}
+#login a{
+    font-weight: 400;
+    font-size: 20px;
+    padding-top: 10px;
 }

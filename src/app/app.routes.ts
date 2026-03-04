@@ -33,5 +33,13 @@ export const routes: Routes = [
                 f=>f.Faq
             )
         }
+    },
+    {
+        path:"login",
+        loadComponent:()=>{
+            return import("./login/login").then(
+                l=>l.Login
+            )
+        }
     }
 ];
