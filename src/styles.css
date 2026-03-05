@@ -5,6 +5,11 @@
     font-family: "Roboto", sans-serif;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 app-root {
     height: 100%;
     display: block;
@@ -18,6 +23,13 @@ app-auth-layout {
 
 app-login {
 
+    display: flex;
+    justify-content: center;
+    padding-top: 175px;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+app-register {
     display: flex;
     justify-content: center;
     padding-top: 175px;
