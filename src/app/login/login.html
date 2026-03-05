@@ -1,2 +1,26 @@
-<p>login works!</p>
-<a routerLink="/register">Register</a>
+<form>
+    <div class="slika-box">
+        <img class="slika" src="/pozadina.jpg">
+        <p>
+            Zabava<br>shop
+        </p>
+        <div class="ikonice">
+            <img class="ikona" src="/instagram.png">
+            <img class="ikona" src="/youtube.png">
+            <img class="ikona" src="/email-black-envelope-shape.png">
+        </div>
+    </div>
+    <div class="login-box">
+        <div class="input-box">
+            <input type="text" class="input" placeholder="Username" name="username" autocomplete="off">
+        </div>
+        <div class="input-box">
+            <input type="password" class="input" placeholder="Password" name="password" autocomplete="off">
+        </div>
+        <div class="login-btn">
+            <button type="submit" name="Login">Login</button>
+        </div>
+        <label id="error"></label>
+        <label id="register">Don't have an account? <a href="register.php">Register</a></label>
+    </div>
+</form>
