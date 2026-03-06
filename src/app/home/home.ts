@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import axios from 'axios'
+import { ToyModel } from '../models/toy.model';
 
 @Component({
     selector: 'app-home',
@@ -9,7 +10,7 @@ import axios from 'axios'
 })
 export class Home {
     image: string="https://toy.pequla.com/"
-    toys=signal<any[]>([])
+    toys=signal<ToyModel[]>([])
     constructor(){
         axios.get("https://toy.pequla.com/api/toy").then(
             rsp=>this.toys.set(rsp.data)

@@ -1,39 +1,70 @@
-header{
+header {
     background-color: black;
     color: white;
 }
-nav{
+
+nav {
     display: flex;
     justify-content: space-between;
 }
-ul{
+
+ul {
     display: flex;
     list-style-type: none;
 }
-li{
+
+li {
     display: flex;
     align-items: flex-end;
     margin: 0 10px;
     height: 85px;
 }
-a{
+
+.links {
     font-weight: 600;
     font-size: 25px;
     text-decoration: none;
     color: white;
     padding-bottom: 5px;
 }
-img{
+
+#logo {
     width: 5.5em;
     height: 3.5em;
-    margin:10px 0 0 10px
+    margin: 10px 0 0 10px
 }
-#login{
-    justify-content: center;
+
+#user_menu img {
+    width: 75px;
+    height: 75px;
+}
+
+#user_menu li {
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
-#login a{
-    font-weight: 400;
-    font-size: 20px;
-    padding-top: 10px;
+
+#user_menu #login a {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    position: relative;
+}
+
+#user_menu #login a::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+#user_menu #login a:hover::before {
+    transform: scaleX(1);
 }

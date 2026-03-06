@@ -35,3 +35,8 @@ app-register {
     padding-top: 175px;
     font-family: 'Trebuchet MS', sans-serif;
 }
+app-profile{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}

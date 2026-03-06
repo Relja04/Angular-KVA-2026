@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="userMenu">
+        <h1>Welcome User</h1>
+        <ul class="userSettings">
+            <li [class.selected]="selectedTab === 'Account settings'">
+                <a (click)="click('Account settings')">Account settings</a>
+            </li>
+
+            <li [class.selected]="selectedTab === 'Orders'">
+                <a (click)="click('Orders')">Orders</a>
+            </li>
+        </ul>
+    </div>
+    @if(selectedTab==="Account settings"){
+    <div id="mainDetails">
+        <header>
+            <h2>Account Details</h2>
+        </header>
+        <label id="item1">Your Details</label>
+        <label id="item2">Username</label>
+        <form id="item3">
+            <input type="text">
+            <button><img src="/check.png"></button>
+        </form>
+        <label id="item4">Email</label>
+        <form id="item5">
+            <input type="text">
+            <button type="submit"><img src="/check.png"></button>
+        </form>
+        <label id="item6">Change Password</label>
+        <form id="item7">
+            <label>Current password</label>
+            <input type="password">
+            <label>New password</label>
+            <input type="password">
+            <label>Confirm password</label>
+            <input type="password">
+            <button>Change password</button>
+        </form>
+        <p id="item8"></p>
+    </div>
+    }@else {
+    <table>
+        <tbody>
+            <tr>
+                <th>Order Number</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Invoice</th>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2023-07-10 05:16:51</td>
+                <td>43,486.00 рсд</td>
+                <td><a href="php stvari/generate_pdf.php?id=4">Details</a>
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>2025-02-09 08:30:37</td>
+                <td>64,982.00 рсд</td>
+                <td><a href="php stvari/generate_pdf.php?id=7">Details</a>
+                </td>
+            </tr>
+            <tr>
+                <td>33</td>
+                <td>2024-06-03 00:57:43</td>
+                <td>45,988.00 рсд</td>
+                <td><a href="php stvari/generate_pdf.php?id=33">Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    }
+
+</div>

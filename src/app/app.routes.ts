@@ -7,6 +7,8 @@ import { Contact } from "./contact/contact"
 import { Faq } from "./faq/faq"
 import { Login } from './login/login';
 import { Register } from "./register/register"
+import { Profile } from "./user/profile/profile"
+import { Cart } from "./user/cart/cart"
 
 export const routes: Routes = [
     {
@@ -16,7 +18,9 @@ export const routes: Routes = [
             {path:"",component:Home},
             {path:"about",component:About},
             {path:"contact",component:Contact},
-            {path:"faq",component:Faq}
+            {path:"faq",component:Faq},
+            {path:"profile",component:Profile},
+            {path:"cart",component:Cart}
         ]
     },
     {

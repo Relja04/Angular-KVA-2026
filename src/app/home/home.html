@@ -1,3 +1,4 @@
+@if(toys().length>0){
 <div class="container">
     @for(t of toys(); track $index){
     <div class="igracka">
@@ -10,6 +11,10 @@
     </div>
     }
 </div>
+}@else {
+    <h3>Podaci se ucitavaju molimo sacekajte</h3>
+}
+
 @if (selectedToy) {
 <div class="overlay" (click)="closeDetails()">
     <div class="detail" (click)="$event.stopPropagation()">

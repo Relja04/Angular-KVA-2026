@@ -2,24 +2,24 @@
     <nav>
         <ul>
             <li>
-                <a routerLink="/"><img [src]="logoPath"></a>
+                <a routerLink="/" class="links"><img id="logo" [src]="logoPath"></a>
             </li>
             <li>
-                <a routerLink="/about">ABOUT US</a>
+                <a routerLink="/about" class="links">ABOUT US</a>
             </li>
             <li>
-                <a routerLink="/contact">CONTACT</a>
+                <a routerLink="/contact" class="links">CONTACT</a>
             </li>
             <li>
-                <a routerLink="/faq">FAQ</a>
+                <a routerLink="/faq" class="links">FAQ</a>
             </li>
         </ul>
-        <ul>
+        <ul id="user_menu">
             <li>
-                <img src="#" alt="Korpa">
+                <a routerLink="/cart"><img src="/basket_icon.png" alt="Korpa"></a>
             </li>
             <li>
-                <img src="#" alt="Profil">
+                <a routerLink="/profile"><img src="/user_icon.png" alt="Profil"></a>
             </li>
             <li id="login">
                 <a routerLink="/login">Sign in</a>
