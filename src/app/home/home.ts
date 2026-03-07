@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import axios from 'axios'
 import { ToyModel } from '../models/toy.model';
+import { Utils } from '../utils';
 
 @Component({
     selector: 'app-home',
@@ -11,7 +12,7 @@ import { ToyModel } from '../models/toy.model';
 export class Home {
     image: string="https://toy.pequla.com/"
     toys=signal<ToyModel[]>([])
-    constructor(){
+    constructor(public utils:Utils){
         axios.get("https://toy.pequla.com/api/toy").then(
             rsp=>this.toys.set(rsp.data)
         )

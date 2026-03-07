@@ -1,4 +1,62 @@
 @if(toys().length>0){
+        <div class="filters">
+        <ul>
+            <li>
+                <label>Naziv: </label>
+                <input type="text">
+            </li>
+            <li>
+                <span>Tip: </span>
+                <select>
+                    <option>Slagalica</option>
+                    <option>Slikovnica</option>
+                    <option>Figura</option>
+                    <option>Kreativni set</option>
+                    <option>Vozilo</option>
+                    <option>Plišana igračka</option>
+                    <option>Društvena igra</option>
+                    <option>Konstruktorski set</option>
+                    <option>Muzička igračka</option>
+                    <option>Edukativna igračka</option>
+                </select>
+            </li>
+            <li>
+                <span>Uzrast: </span>
+                <select>
+                    <option>0-2</option>
+                    <option>3-5</option>
+                    <option>6-9</option>
+                    <option>10+</option>
+                </select>
+            </li>
+            <li>
+                <span>Ciljana grupa: </span><br>
+                <input type="radio" name="pol" value="Svi" id="svi" class="radio">
+                <label for="svi">Svi</label>
+                <input type="radio" name="pol" value="Decaci" id="decaci" class="radio">
+                <label for="decaci">Decaci</label>
+                <input type="radio" name="pol" value="Devojcice" id="devojcice" class="radio">
+                <label for="devojcice">Devojcice</label>
+            </li>
+            <li>
+                <span>Cena:</span>
+            </li>
+            <li>
+                <span>Od: </span><input type="number"><span> Do: </span><input type="number">
+            </li>
+            <li>
+                <span>Recenzija: </span>
+                <select>
+                    <option>★★★★★</option>
+                    <option>★★★★</option>
+                    <option>★★★</option>
+                    <option>★★</option>
+                    <option>★</option>
+                    <option>Bez recenzije</option>
+                </select>
+            </li>
+        </ul>
+    </div>
 <div class="container">
     @for(t of toys(); track $index){
     <div class="igracka">
@@ -25,7 +83,7 @@
         <p id="opis">Opis: {{selectedToy.description + " " + selectedToy.ageGroup.description}}</p>
         <p>Uzrast: {{selectedToy.ageGroup.name + " godina"}}</p>
         <p>Ciljna grupa: {{selectedToy.targetGroup}}</p>
-        <p>Datum proizvodnje: {{selectedToy.productionDate}}</p>
+        <p>Datum proizvodnje: {{utils.formatDate(selectedToy.productionDate)}}</p>
         <button (click)="closeDetails()">Zatvori</button>
     </div>
 </div>
