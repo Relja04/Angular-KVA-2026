@@ -19,23 +19,23 @@
         <label id="item1">Your Details</label>
         <label id="item2">Username</label>
         <form id="item3">
-            <input type="text">
-            <button><img src="/check.png"></button>
+            <input type="text" value="{{service.getActiveUser()?.username}}" id="username">
+            <button type="button" (click)="doUpdateUsername()"><img src="/check.png"></button>
         </form>
         <label id="item4">Email</label>
         <form id="item5">
-            <input type="text">
-            <button type="submit"><img src="/check.png"></button>
+            <input type="text" value="{{service.getActiveUser()?.email}}" id="email">
+            <button type="button" (click)="doUpdateEmail()"><img src="/check.png"></button>
         </form>
         <label id="item6">Change Password</label>
         <form id="item7">
             <label>Current password</label>
-            <input type="password">
+            <input type="password" id="pass1">
             <label>New password</label>
-            <input type="password">
+            <input type="password" id="pass2">
             <label>Confirm password</label>
-            <input type="password">
-            <button>Change password</button>
+            <input type="password" id="newPass">
+            <button (click)="doUpdatePassword()">Change password</button>
         </form>
         <p id="item8"></p>
     </div>

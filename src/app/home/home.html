@@ -64,7 +64,12 @@
         <h3>{{t.name}}</h3>
         <p>{{t.price}} Рсд</p>
         <p>TODO recenzija</p>
-        <button>Rezerviši</button>
+        @if (service.getActiveUser()) {
+            <button>Rezerviši</button>
+        }@else {
+            <button routerLink="/login">Rezerviši</button>
+        }
+        
         <button (click)="openDetails(t)">Detalji</button>
     </div>
     }

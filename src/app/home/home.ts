@@ -2,14 +2,17 @@ import { Component, signal } from '@angular/core';
 import axios from 'axios'
 import { ToyModel } from '../models/toy.model';
 import { Utils } from '../utils';
+import { AuthService } from '../services/auth.service';
+import { RouterLink } from "@angular/router";
 
 @Component({
     selector: 'app-home',
-    imports: [],
+    imports: [RouterLink],
     templateUrl: './home.html',
     styleUrl: './home.css',
 })
 export class Home {
+    service=AuthService
     image: string="https://toy.pequla.com/"
     toys=signal<ToyModel[]>([])
     constructor(public utils:Utils){
