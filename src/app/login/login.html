@@ -1,26 +1,24 @@
-<form>
-    <div class="slika-box">
-        <img class="slika" src="/pozadina.jpg">
-        <p>
-            Zabava<br>shop
-        </p>
-        <div class="ikonice">
-            <img class="ikona" src="/instagram.png">
-            <img class="ikona" src="/youtube.png">
-            <img class="ikona" src="/email-black-envelope-shape.png">
-        </div>
+<div class="slika-box">
+    <img class="slika" src="/pozadina.jpg">
+    <p>
+        Zabava<br>shop
+    </p>
+    <div class="ikonice">
+        <img class="ikona" src="/instagram.png">
+        <img class="ikona" src="/youtube.png">
+        <img class="ikona" src="/email-black-envelope-shape.png">
     </div>
-    <div class="login-box">
-        <div class="input-box">
-            <input type="text" class="input" placeholder="Username" name="username" autocomplete="off">
-        </div>
-        <div class="input-box">
-            <input type="password" class="input" placeholder="Password" name="password" autocomplete="off">
-        </div>
-        <div class="login-btn">
-            <button type="submit" name="Login">Login</button>
-        </div>
-        <label id="error"></label>
-        <label id="register">Don't have an account? <a routerLink="/register">Register</a></label>
+</div>
+<div class="login-box">
+    <div class="input-box">
+        <input type="text" class="input" placeholder="Username" autocomplete="off" [(ngModel)]="email" >
     </div>
-</form>
+    <div class="input-box">
+        <input type="password" class="input" placeholder="Password" autocomplete="off" [(ngModel)]="password">
+    </div>
+    <div class="login-btn">
+        <button type="button" (click)="doLogin()">Login</button>
+    </div>
+    <label id="error"></label>
+    <label id="register">Don't have an account? <a routerLink="/register">Register</a></label>
+</div>
