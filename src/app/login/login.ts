@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from "@angular/router";
 import { AuthService } from '../services/auth.service';
+import { Alerts } from '../alert';
 
 @Component({
 	selector: 'app-login',
@@ -24,6 +25,6 @@ export class Login {
 			this.router.navigate(['/'])
 			return
 		}
-		alert("Invalid email or password!")
+		Alerts.error("Incorrect email or password")
 	}
 }

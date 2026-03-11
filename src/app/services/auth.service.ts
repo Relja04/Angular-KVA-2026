@@ -1,4 +1,5 @@
 import { UserModel } from "../models/user.model"
+import { Alerts } from "../alert"
 
 const USERS = "users"
 const ACTIVE = "active"
@@ -54,6 +55,7 @@ export class AuthService {
             }
         }
         localStorage.setItem(USERS, JSON.stringify(users))
+
     }
 
     static updateUsername(newUsername: string) {
@@ -64,22 +66,26 @@ export class AuthService {
             }
         }
         localStorage.setItem(USERS, JSON.stringify(users))
+
     }
     static updatePassword(oldPass: string, newPass: string, confPass: boolean) {
         if (!confPass) {
-            alert("Password do not match")
+            Alerts.error("Passwords do not match")
             return
         }
+
 
         const users = this.getUsers()
         for (let u of users) {
             if (u.email === localStorage.getItem(ACTIVE) && u.password !== oldPass) {
-                alert("Incorrect password")
+                Alerts.error("Incorrect password")
                 return
             }
             else if (u.email === localStorage.getItem(ACTIVE) && u.password === oldPass) {
                 u.password = newPass
                 localStorage.setItem(USERS, JSON.stringify(users))
+                Alerts.success("Password updated successfully!")
+
                 return
             }
         }
