@@ -65,7 +65,7 @@
         <p>{{t.price}} Рсд</p>
         <p>TODO recenzija</p>
         @if (service.getActiveUser()) {
-            <button>Rezerviši</button>
+            <button (click)="onAdd(t)">Rezerviši</button>
         }@else {
             <button routerLink="/login">Rezerviši</button>
         }

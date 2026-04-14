@@ -1,1 +1,28 @@
-<p>cart works!</p>
+<div class="container">
+    <table class="tabela">
+        <tr>
+            <th id="product">Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+        @for (item of cartService.items(); track item.toy.toyId) {
+            <tr>
+                <td class="product"><img [src]="image+item.toy.imageUrl"><p>{{item.toy.name}}</p></td>
+                <td><p>{{item.toy.price}}</p></td>
+                <td><p>{{item.quantity}}</p></td>
+                <td><p>{{item.quantity*item.toy.price}} RSD</p></td>
+                <td>
+                    <button (click)="cartService.removeFromCart(item.toy.toyId)">Clear</button>
+                    <button (click)="cartService.decreaseQuantity(item.toy.toyId)">Remove</button>
+                    <button (click)="cartService.increaseQuantity(item.toy.toyId)">Add</button>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="checkout">
+        <h1>Cart Totals</h1>
+        <h3>Subtotal: {{cartService.totalPrice()}} RSD</h3>
+        <button>Checkout</button>
+    </div>
+</div>

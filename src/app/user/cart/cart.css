@@ -1,0 +1,42 @@
+.container{
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+.tabela{
+    width: 65%;
+    border-collapse: collapse;
+}
+.tabela th{
+    padding: 10px;
+}
+#product{
+    padding-left: 90px;
+}
+.tabela img{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.tabela td{
+    text-align: center;
+    width: fit-content;
+    border-top: 1px solid;
+    padding: 5px;
+}
+.tabela p{
+    height: 100px;
+    line-height: 100px;
+}
+.tabela .product{
+    align-items: center;
+    justify-content: center;
+}
+.checkout{
+    display: flex;
+    flex-direction: column;
+    margin-left: 70px;
+}
+button{
+    float: right;
+}
