@@ -17,6 +17,7 @@ export class Home {
     image: string = "https://toy.pequla.com/"
     toys = signal<ToyModel[]>([])
     constructor(public utils: Utils,private cartService:CartService) {
+        cartService.refreshUserCart()
         ToyService.getToys().then(
             rsp => this.toys.set(rsp.data)
         )

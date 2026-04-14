@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from "@angular/core";
+import { Injectable, signal, computed, effect, untracked } from "@angular/core";
 import { ToyModel } from "../models/toy.model";
 
 export interface CartItem {
@@ -9,20 +9,40 @@ export interface CartItem {
     providedIn: 'root',
 })
 export class CartService {
-    private cartItems = signal<CartItem[]>([]);
+    private get userKey(): string {
+        const email = localStorage.getItem("active");
+        return `cart_${email}`;
+    }
+
+    private cartItems = signal<CartItem[]>(this.loadCart());
     items = this.cartItems.asReadonly();
 
     totalPrice = computed(() =>
         this.cartItems().reduce((acc, item) => acc + (item.toy.price * item.quantity), 0)
     );
 
+    constructor() {
+        effect(() => {
+            const items = this.cartItems();
+            const key = untracked(() => this.userKey);
+            localStorage.setItem(key, JSON.stringify(items));
+        });
+    }
+    refreshUserCart() {
+        this.cartItems.set(this.loadCart());
+    }
+
+    private loadCart(): CartItem[] {
+        const savedCart = localStorage.getItem(this.userKey);
+        return savedCart ? JSON.parse(savedCart) : [];
+    }
+
     addToCart(product: ToyModel) {
         this.cartItems.update(prev => {
             const existing = prev.find(i => i.toy.toyId === product.toyId);
             if (existing) {
                 return prev.map(i => i.toy.toyId === product.toyId
-                    ? { ...i, quantity: i.quantity + 1 }
-                    : i
+                    ? { ...i, quantity: i.quantity + 1 } : i
                 );
             }
             return [...prev, { toy: product, quantity: 1 }];

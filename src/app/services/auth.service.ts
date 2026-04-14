@@ -24,6 +24,7 @@ export class AuthService {
     static login(email: string, password: string) {
         const users = this.getUsers()
         for (let u of users) {
+            console.log(u)
             if (u.email === email && u.password === password) {
                 localStorage.setItem(ACTIVE, email)
                 return true
@@ -31,6 +32,25 @@ export class AuthService {
         }
 
         return false
+    }
+    static register(email:string,password:string,username:string){
+        const users=this.getUsers();
+        for(let u of users){
+            if(u.email===email){
+                return false
+            }
+        }
+        const user:UserModel={
+            email: email,
+            username: username,
+            password: password,
+            firstName: 'Example',
+            lastName: 'User',
+            orders: []
+        }
+        users.push(user)
+        localStorage.setItem(USERS,JSON.stringify(users))
+        return true
     }
     static getActiveUser(): UserModel | null {
         const users = this.getUsers()
@@ -85,7 +105,6 @@ export class AuthService {
                 u.password = newPass
                 localStorage.setItem(USERS, JSON.stringify(users))
                 Alerts.success("Password updated successfully!")
-
                 return
             }
         }

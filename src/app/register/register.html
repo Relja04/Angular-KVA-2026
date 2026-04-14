@@ -12,21 +12,21 @@
         </div>
         <div class="login-box">
             <div class="input-box">
-                <input type="text" class="input" placeholder="Email" name="email" autocomplete="off">
+                <input type="text" class="input" placeholder="Email" name="email" autocomplete="off" id="email">
             </div>
             <label id="error-email"></label>
             <div class="input-box">
-                <input type="text" class="input" placeholder="Username" name="username" autocomplete="off">
+                <input type="text" class="input" placeholder="Username" name="username" autocomplete="off" id="username">
             </div>
             <div class="input-box">
-                <input type="password" class="input" placeholder="Password" name="password" autocomplete="off">
+                <input type="password" class="input" placeholder="Password" name="password" autocomplete="off" id="password">
             </div>
             <div class="input-box">
-                <input type="password" class="input" placeholder="Confirm Password" name="passwordconfirm" autocomplete="off">
+                <input type="password" class="input" placeholder="Confirm Password" name="passwordconfirm" autocomplete="off" id="passwordConf">
             </div>
             <label id="error-password"></label>
             <div class="login-btn">
-                <button type="submit" name="Login">Register</button>
+                <button type="button" (click)="doRegister()">Register</button>
             </div>
             <label id="register">Already have an account? <a routerLink="/login">Login</a></label>
         </div>
