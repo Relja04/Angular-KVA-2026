@@ -64,14 +64,14 @@
         <img [src]="image+t.imageUrl">
         <h3>{{t.name}}</h3>
         <p>{{t.price}} Рсд</p>
-        <p>TODO recenzija</p>
+        <p>@if (calculatedOcena(t.toyId)!=0) {{{calculatedOcena(t.toyId)}}}@else {Nema Recenzije}</p>
         @if (service.getActiveUser()) {
             <button (click)="onAdd(t)">Rezerviši</button>
         }@else {
             <button routerLink="/login">Rezerviši</button>
         }
         
-        <button (click)="openDetails(t)">Detalji</button>
+        <button (click)="openDetails(t,t.toyId)">Detalji</button>
     </div>
     }
 </div>
@@ -91,6 +91,15 @@
         <p>Ciljna grupa: {{selectedToy.targetGroup}}</p>
         <p>Datum proizvodnje: {{utils.formatDate(selectedToy.productionDate)}}</p>
         <button (click)="closeDetails()">Zatvori</button>
+    </div>
+    <div class="komentari" (click)="$event.stopPropagation()">
+        @for (k of komentari(); track $index) {
+            <h2>{{k.ime}}</h2>
+            <p>{{k.komentar}}</p>
+            <p id="zvezdice">{{'★'.repeat(k.ocena)}}</p>
+        }@empty {
+            <h2>Artikl nema recenzije</h2>
+        }
     </div>
 </div>
 }

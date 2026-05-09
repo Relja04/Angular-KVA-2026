@@ -77,9 +77,15 @@
     background-color: rgb(189, 123, 0);
 }
 
+.igracka p:nth-of-type(2){
+    color: #EFBF04;
+}
+
 ul {
     list-style-type: none;
 }
+
+
 
 .filters {
     display: flex;
@@ -128,6 +134,7 @@ option {
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.3s ease;
+    overflow: hidden;
 }
 
 .detail {
@@ -167,4 +174,23 @@ option {
     width: 200px;
     height: 200px;
     float: right;
+}
+.komentari{
+    background: white;
+    padding: 20px;
+    width: 500px;
+    margin-left: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    font-size: 17px;
+    animation: scaleIn 0.3s ease;
+    max-height: 326px;
+    overflow:auto;
+    border-radius: 10px;
+    mask-image: radial-gradient(white, black);
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.komentari #zvezdice{
+    color: #EFBF04;
+    font-size: 22px;
 }
