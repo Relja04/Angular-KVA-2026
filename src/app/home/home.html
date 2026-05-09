@@ -3,11 +3,12 @@
         <ul>
             <li>
                 <label>Naziv: </label>
-                <input type="text">
+                <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)">
             </li>
             <li>
                 <span>Tip: </span>
                 <select>
+                    <option></option>
                     <option>Slagalica</option>
                     <option>Slikovnica</option>
                     <option>Figura</option>
@@ -58,7 +59,7 @@
         </ul>
     </div>
 <div class="container">
-    @for(t of toys(); track $index){
+    @for(t of filteredToys(); track $index){
     <div class="igracka">
         <img [src]="image+t.imageUrl">
         <h3>{{t.name}}</h3>
