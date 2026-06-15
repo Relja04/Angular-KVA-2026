@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
-import { AuthService } from '../services/auth.service';
-import { Alerts } from '../alert';
+import { Component } from '@angular/core'
+import { RouterLink } from "@angular/router"
+import { AuthService } from '../services/auth.service'
+import { Alerts } from '../alert'
 
 @Component({
     selector: 'app-register',

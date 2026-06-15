@@ -41,36 +41,58 @@
     </div>
     }@else {
     <table>
-        <tbody>
+        <thead>
             <tr>
                 <th>Order Number</th>
                 <th>Date</th>
                 <th>Total</th>
                 <th>Invoice</th>
             </tr>
+        </thead>
+        <tbody>
+            @for(order of orderService.orders(); track order.orderId){
             <tr>
-                <td>4</td>
-                <td>2023-07-10 05:16:51</td>
-                <td>43,486.00 рсд</td>
-                <td><a href="php stvari/generate_pdf.php?id=4">Details</a>
+                <td>#{{order.orderId}}</td>
+                <td>{{order.createdAt|date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                <td>{{order.total|number:'1.2-2'}} rsd</td>
+                <td>
+                    @if(order.status=="in delivery"){
+                    <span class="status-transit">In Delivery ({{ order.timeRemaining }})</span>
+                    }@else {
+                    <span class="status-delivered">Delivered</span><br />
+                    <button class="viewOrder" (click)="viewOrder(order.orderId)">View Order</button>
+                    }
                 </td>
             </tr>
+            }@empty {
             <tr>
-                <td>7</td>
-                <td>2025-02-09 08:30:37</td>
-                <td>64,982.00 рсд</td>
-                <td><a href="php stvari/generate_pdf.php?id=7">Details</a>
+                <td colspan="4" style="text-align: center; padding: 20px; color: #888;">
+                    You haven't placed any orders yet.
                 </td>
             </tr>
-            <tr>
-                <td>33</td>
-                <td>2024-06-03 00:57:43</td>
-                <td>45,988.00 рсд</td>
-                <td><a href="php stvari/generate_pdf.php?id=33">Details</a>
-                </td>
-            </tr>
+            }
         </tbody>
     </table>
     }
 
 </div>
+@if(showOverlay){
+<div class="overlay" (click)="closeOverlay()">
+    <div class="detail" (click)="$event.stopPropagation()">
+        <h2>Order ID {{selectedOrder()?.orderId}}</h2>
+        <p>Total: <b>{{selectedOrder()?.total}}</b> Рсд</p>
+        <p>Datum: {{selectedOrder()?.createdAt|date:'dd.MM.yyyy HH:mm'}}</p>
+        <button (click)="closeOverlay()">Zatvori</button>
+    </div>
+    <div class="items" (click)="$event.stopPropagation()">
+        @for (order of selectedOrder()?.items; track $index) {
+        <img [src]="image + order.toy.imageUrl">
+        <p>Naziv: {{order.toy.name}}</p>
+        <p>Kolicina: {{order.quantity}}</p>
+        <p>Jedinicna cena: {{order.toy.price}}</p>
+        <p>Ukupna cena: {{order.toy.price*order.quantity}}</p>
+        <br><br>
+        }
+    </div>
+</div>
+}

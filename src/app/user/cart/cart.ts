@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { Component, inject } from '@angular/core'
+import { CartService } from '../../services/cart.service'
 
 
 @Component({
@@ -9,6 +9,7 @@ import { CartService } from '../../services/cart.service';
     styleUrl: './cart.css',
 })
 export class Cart {
+    orderService = inject(CartService)
     image: string = "https://toy.pequla.com/"
     constructor(public cartService: CartService) {}
 }

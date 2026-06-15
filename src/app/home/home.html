@@ -1,63 +1,81 @@
 @if(toys().length>0){
-        <div class="filters">
-        <ul>
-            <li>
-                <label>Naziv: </label>
-                <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)">
-            </li>
-            <li>
-                <span>Tip: </span>
-                <select>
-                    <option></option>
-                    <option>Slagalica</option>
-                    <option>Slikovnica</option>
-                    <option>Figura</option>
-                    <option>Kreativni set</option>
-                    <option>Vozilo</option>
-                    <option>Plišana igračka</option>
-                    <option>Društvena igra</option>
-                    <option>Konstruktorski set</option>
-                    <option>Muzička igračka</option>
-                    <option>Edukativna igračka</option>
-                </select>
-            </li>
-            <li>
-                <span>Uzrast: </span>
-                <select>
-                    <option>0-2</option>
-                    <option>3-5</option>
-                    <option>6-9</option>
-                    <option>10+</option>
-                </select>
-            </li>
-            <li>
-                <span>Ciljana grupa: </span><br>
-                <input type="radio" name="pol" value="Svi" id="svi" class="radio">
-                <label for="svi">Svi</label>
-                <input type="radio" name="pol" value="Decaci" id="decaci" class="radio">
-                <label for="decaci">Decaci</label>
-                <input type="radio" name="pol" value="Devojcice" id="devojcice" class="radio">
-                <label for="devojcice">Devojcice</label>
-            </li>
-            <li>
-                <span>Cena:</span>
-            </li>
-            <li>
-                <span>Od: </span><input type="number"><span> Do: </span><input type="number">
-            </li>
-            <li>
-                <span>Recenzija: </span>
-                <select>
-                    <option>★★★★★</option>
-                    <option>★★★★</option>
-                    <option>★★★</option>
-                    <option>★★</option>
-                    <option>★</option>
-                    <option>Bez recenzije</option>
-                </select>
-            </li>
-        </ul>
-    </div>
+<div class="filters">
+    <ul>
+        <li>
+            <label>Naziv: </label>
+            <input type="text" [ngModel]="searchTerm()" (ngModelChange)="searchTerm.set($event)">
+        </li>
+
+        <li>
+            <span>Tip: </span>
+            <select [ngModel]="selectedCategory()" (ngModelChange)="selectedCategory.set($event)">
+                <option value="">Sve kategorije</option>
+                <option>Slagalica</option>
+                <option>Slikovnica</option>
+                <option>Figura</option>
+                <option>Kreativni set</option>
+                <option>Vozilo</option>
+                <option>Plišana igračka</option>
+                <option>Društvena igra</option>
+                <option>Konstruktorski set</option>
+                <option>Muzička igračka</option>
+                <option>Edukativna igračka</option>
+            </select>
+        </li>
+
+        <li>
+            <span>Uzrast: </span>
+            <select [ngModel]="selectedAge()" (ngModelChange)="selectedAge.set($event)">
+                <option value="">Svi uzrasti</option>
+                <option>0-2</option>
+                <option>3-5</option>
+                <option>6-9</option>
+                <option>10+</option>
+            </select>
+        </li>
+
+        <li>
+            <span>Ciljana grupa: </span><br>
+            <input type="radio" name="pol" value="svi" id="svi" class="radio" [ngModel]="selectedTargetGroup()"
+                (ngModelChange)="selectedTargetGroup.set($event)">
+            <label for="svi">Svi</label>
+
+            <input type="radio" name="pol" value="dečak" id="decaci" class="radio" [ngModel]="selectedTargetGroup()"
+                (ngModelChange)="selectedTargetGroup.set($event)">
+            <label for="decaci">Decaci</label>
+
+            <input type="radio" name="pol" value="devojčica" id="devojcice" class="radio"
+                [ngModel]="selectedTargetGroup()" (ngModelChange)="selectedTargetGroup.set($event)">
+            <label for="devojcice">Devojcice</label>
+        </li>
+
+        <li>
+            <span>Cena:</span>
+        </li>
+        <li>
+            <span>Od: </span>
+            <input type="number" [ngModel]="minPrice()" (ngModelChange)="minPrice.set($event)">
+            <span> Do: </span>
+            <input type="number" [ngModel]="maxPrice()" (ngModelChange)="maxPrice.set($event)">
+        </li>
+
+        <li>
+            <span>Recenzija: </span>
+            <select [ngModel]="selectedRating()" (ngModelChange)="selectedRating.set($event)">
+                <option value="">Sve ocene</option>
+                <option>★★★★★</option>
+                <option>★★★★</option>
+                <option>★★★</option>
+                <option>★★</option>
+                <option>★</option>
+                <option>Bez recenzije</option>
+            </select>
+        </li>
+        <li>
+            <button class="clearButton" (click)="clearFilters()">Clear</button>
+        </li>
+    </ul>
+</div>
 <div class="container">
     @for(t of filteredToys(); track $index){
     <div class="igracka">
@@ -66,17 +84,17 @@
         <p>{{t.price}} Рсд</p>
         <p>@if (calculatedOcena(t.toyId)!=0) {{{calculatedOcena(t.toyId)}}}@else {Nema Recenzije}</p>
         @if (service.getActiveUser()) {
-            <button (click)="onAdd(t)">Rezerviši</button>
+        <button (click)="onAdd(t)">Rezerviši</button>
         }@else {
-            <button routerLink="/login">Rezerviši</button>
+        <button routerLink="/login">Rezerviši</button>
         }
-        
+
         <button (click)="openDetails(t,t.toyId)">Detalji</button>
     </div>
     }
 </div>
 }@else {
-    <h3>Podaci se ucitavaju molimo sacekajte</h3>
+<h3>Podaci se ucitavaju molimo sacekajte</h3>
 }
 
 @if (selectedToy) {
@@ -94,12 +112,20 @@
     </div>
     <div class="komentari" (click)="$event.stopPropagation()">
         @for (k of komentari(); track $index) {
-            <h2>{{k.ime}}</h2>
-            <p>{{k.komentar}}</p>
-            <p id="zvezdice">{{'★'.repeat(k.ocena)}}</p>
+        <h2>{{k.ime}}</h2>
+        <p>{{k.komentar}}</p>
+        <p id="zvezdice">{{'★'.repeat(k.ocena)}}</p>
         }@empty {
-            <h2>Artikl nema recenzije</h2>
+        <h2>Artikl nema recenzije</h2>
         }
     </div>
+</div>
+}
+@if (showToast()) {
+<div class="glide-toast" 
+     (mouseenter)="onToastMouseEnter()" 
+     (mouseleave)="onToastMouseLeave()">
+    <p>Item Added Successfully</p>
+    <a routerLink="/cart">Check basket</a>
 </div>
 }

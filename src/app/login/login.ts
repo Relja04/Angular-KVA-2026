@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from "@angular/router";
-import { AuthService } from '../services/auth.service';
-import { Alerts } from '../alert';
+import { Component } from '@angular/core'
+import { FormsModule } from '@angular/forms'
+import { Router, RouterLink } from "@angular/router"
+import { AuthService } from '../services/auth.service'
+import { Alerts } from '../alert'
 
 @Component({
 	selector: 'app-login',

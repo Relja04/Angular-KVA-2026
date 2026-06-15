@@ -34,7 +34,7 @@ export class AuthService {
         return false
     }
     static register(email:string,password:string,username:string){
-        const users=this.getUsers();
+        const users=this.getUsers()
         for(let u of users){
             if(u.email===email){
                 return false

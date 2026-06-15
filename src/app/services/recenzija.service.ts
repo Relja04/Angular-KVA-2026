@@ -17,4 +17,16 @@ export class RecenzijaService {
         
         return JSON.parse(localStorage.getItem(RECENZIJE)!)
     }
+    static addRecenzija(recenzija: RecenzijaModel) {
+        const trenutneRecenzije = this.getRecenzije()
+
+        const postojeciToy = trenutneRecenzije.find(r => r.toyId === recenzija.toyId)
+
+        if (postojeciToy) {
+            postojeciToy.recenzije.push(...recenzija.recenzije)
+        } else {
+            trenutneRecenzije.push(recenzija)
+        }
+        localStorage.setItem(RECENZIJE, JSON.stringify(trenutneRecenzije))
+    }
 }

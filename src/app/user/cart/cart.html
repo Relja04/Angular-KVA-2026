@@ -23,6 +23,6 @@
     <div class="checkout">
         <h1>Cart Totals</h1>
         <h3>Subtotal: {{cartService.totalPrice()}} RSD</h3>
-        <button>Checkout</button>
+        <button (click)="cartService.checkout()">Checkout</button>
     </div>
 </div>

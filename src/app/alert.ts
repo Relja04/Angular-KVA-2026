@@ -1,4 +1,4 @@
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
 export class Alerts {
     static success(text: string) {
         Swal.fire({

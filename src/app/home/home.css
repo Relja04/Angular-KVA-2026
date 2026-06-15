@@ -19,6 +19,14 @@
         transform: scale(1) translateY(0);
     }
 }
+@keyframes slideInUp {
+    from {
+        bottom: -60px;
+    }
+    to {
+        bottom: 30px;
+    }
+}
 
 
 
@@ -103,6 +111,17 @@ ul {
     border-bottom: 2px solid #111;
     background-color: transparent;
     outline: none;
+}
+.filters .clearButton{
+    width: 15em;
+    height: 2em;
+    display: block;
+    margin: 0 auto;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 1em;
 }
 
 .radio {
@@ -193,4 +212,22 @@ option {
 .komentari #zvezdice{
     color: #EFBF04;
     font-size: 22px;
+}
+.glide-toast {
+    position: fixed;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+    animation: slideInUp 0.3s cubic-bezier(0.1, 0.8, 0.5, 1);
 }
