@@ -57,10 +57,15 @@
                 <td>{{order.total|number:'1.2-2'}} rsd</td>
                 <td>
                     @if(order.status=="in delivery"){
-                    <span class="status-transit">In Delivery ({{ order.timeRemaining }})</span>
+                    <span class="status-transit">In Delivery ({{ order.timeRemaining }})</span><br />
+                    <button class="cancel" (click)="orderService.cancelOrder(order.orderId)">Cancel order</button>
+                    }@else if (order.status=="cancelled") {
+                    <span class="status-cancelled">Cancelled</span><br />
+                    <button class="viewOrder" (click)="viewOrder(order.orderId)">View Order</button>
                     }@else {
                     <span class="status-delivered">Delivered</span><br />
-                    <button class="viewOrder" (click)="viewOrder(order.orderId)">View Order</button>
+                    <button class="viewOrder" (click)="viewOrder(order.orderId)">View Order</button><br />
+                    <button class="viewOrder" (click)="addReview(order.orderId)">Write a review</button>
                     }
                 </td>
             </tr>
@@ -93,6 +98,32 @@
         <p>Ukupna cena: {{order.toy.price*order.quantity}}</p>
         <br><br>
         }
+    </div>
+</div>
+}
+@if(showReviewOverlay){
+<div class="overlay" (click)="closeOverlay()">
+    <div class="review" (click)="$event.stopPropagation()">
+        <label>Select toy: </label>
+        <select class="toyList" [ngModel]="selectedToy()" (ngModelChange)="selectedToy.set($event)">
+            @for (item of selectedOrder()!.items; track $index) {
+            <option [ngValue]="item.toy">{{ item.toy.name }}</option>
+            }
+        </select>
+
+        <div class="starRating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+        </div>
+
+        <div class="textareaDiv">
+            <textarea id="reviewText" placeholder="Write your review here..."></textarea>
+        </div>
+
+        <button class="reviewSubmit" (click)="submitReview()">Submit</button>
     </div>
 </div>
 }

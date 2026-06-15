@@ -1,5 +1,4 @@
 import { RecenzijaModel } from "../models/recenzija.model"
-
 const RECENZIJE = "recenzije"
 export class RecenzijaService {
     static getRecenzije(): RecenzijaModel[] {

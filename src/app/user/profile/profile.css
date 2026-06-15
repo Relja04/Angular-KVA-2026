@@ -61,7 +61,7 @@ header h2 {
     margin: 25px 50px 0px 50px;
 }
 
-.selected{
+.selected {
     background-color: rgb(173, 173, 173);
 }
 
@@ -180,28 +180,33 @@ button {
     color: red;
 }
 
-.container table{
+.container table {
     margin-left: 100px;
     height: max-content;
     border-collapse: collapse;
     margin-bottom: 305px;
 }
-tr{
-        height: 110px;
+
+tr {
+    height: 110px;
 }
-th{
-        padding: 5px 50px;
+
+th {
+    padding: 5px 50px;
     font-size: 30px;
 }
-td{
-        text-align: center;
+
+td {
+    text-align: center;
     font-size: 20px;
     border-bottom: solid 1px;
 }
-.viewOrder{
+
+.viewOrder {
     margin-top: 7px;
 }
-.viewOrder:hover{
+
+.viewOrder:hover {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -219,6 +224,7 @@ td{
     animation: fadeIn 0.3s ease;
     overflow: hidden;
 }
+
 .detail {
     background: white;
     padding: 20px;
@@ -229,6 +235,7 @@ td{
     font-size: 17px;
     animation: scaleIn 0.3s ease;
 }
+
 .detail button {
     all: unset;
     background-color: red;
@@ -239,7 +246,7 @@ td{
     cursor: pointer;
 }
 
-.items{
+.items {
     background: white;
     padding: 20px;
     width: 500px;
@@ -249,7 +256,7 @@ td{
     font-size: 17px;
     animation: scaleIn 0.3s ease;
     max-height: 326px;
-    overflow:auto;
+    overflow: auto;
     border-radius: 10px;
     mask-image: radial-gradient(white, black);
     -webkit-mask-image: -webkit-radial-gradient(white, black);
@@ -260,9 +267,11 @@ td{
     height: 100px;
     float: left;
 }
-.items p{
+
+.items p {
     display: block;
 }
+
 .status-transit {
     color: #e65100;
     font-weight: bold;
@@ -279,4 +288,76 @@ td{
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.9em;
+}
+
+.status-cancelled {
+    color: #b71c1c;
+    font-weight: bold;
+    background-color: #ffcdd2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+.cancel {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    margin-top: 8px;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+    background-color: white;
+    color: black;
+}
+
+.textareaDiv {
+    flex: 1;
+    padding: 20px;
+}
+
+.review textarea {
+    resize: none;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    font-size: 1em;
+}
+.reviewSubmit{
+    margin: 0 auto;
+    font-size: 1.5em;
+    background-color: #1b5e20;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+
+.starRating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    font-size: 5em;
+    user-select: none;
+}
+
+.starRating input {
+    display: none;
+}
+
+.starRating label {
+    color: #e0e0e0;
+    cursor: pointer;
+}
+.starRating input:checked ~ label {
+    color: #ffc107;
 }
