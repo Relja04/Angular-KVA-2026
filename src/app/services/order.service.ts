@@ -18,7 +18,7 @@ export class OrderService {
         }, 1000)
     }
 
-    createOrder(cartItems: CartItem[], total: number) {
+    createOrder(cartItems: CartItem[], total: number,userEmail:string) {
         const now = Date.now()
 
         const deliveryTime = Math.floor(Math.random() * (120 - 45 + 1)) + 45
@@ -26,6 +26,7 @@ export class OrderService {
 
         const newOrder: OrderModel = {
             orderId: Math.floor((Math.random() * (1000 - 0 + 1))),
+            userEmail:userEmail,
             items: [...cartItems],
             status: "in delivery",
             total: total,

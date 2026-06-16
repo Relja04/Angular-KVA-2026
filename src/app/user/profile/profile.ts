@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core'
+import { Component, inject, signal,computed } from '@angular/core'
 import { AuthService } from '../../services/auth.service'
 import { FormsModule } from '@angular/forms'
 import { Alerts } from '../../alert'
@@ -24,7 +24,17 @@ export class Profile {
     selectedOrder = signal<OrderModel | undefined>(undefined)
     showOverlay = false
     showReviewOverlay = false
-    selectedToy=signal<ToyModel|undefined>(undefined)
+    selectedToy = signal<ToyModel | undefined>(undefined)
+    currentUser = signal<string>(localStorage.getItem('active') as string)
+    hasOrders = computed(() => {
+        const ordersList = this.orderService.orders();
+        const user = this.currentUser();
+
+        if (!ordersList || !user) return false;
+
+        // Returns true if at least one order matches the user's email
+        return ordersList.some(order => order.userEmail === user);
+    });
 
     doUpdateEmail() {
         const email = document.getElementById("email") as HTMLInputElement
@@ -66,7 +76,7 @@ export class Profile {
     }
 
     submitReview() {
-        const toyId=this.selectedToy()!.toyId
+        const toyId = this.selectedToy()!.toyId
         const checkedRadio = document.querySelector('input[name="rating"]:checked') as HTMLInputElement;
         const reviewTextArea = document.getElementById('reviewText') as HTMLTextAreaElement;
 
@@ -78,15 +88,15 @@ export class Profile {
             return;
         }
 
-        const users:UserModel[] = JSON.parse(localStorage.getItem("users") || '[]');
-        const currentUser:UserModel|undefined=users.find(e=>e.email==localStorage.getItem("active"));
-        const recenzija:RecenzijaModel={
-            toyId:toyId,
-            recenzije:[
+        const users: UserModel[] = JSON.parse(localStorage.getItem("users") || '[]');
+        const currentUser: UserModel | undefined = users.find(e => e.email == localStorage.getItem("active"));
+        const recenzija: RecenzijaModel = {
+            toyId: toyId,
+            recenzije: [
                 {
-                    ime:currentUser!.firstName,
-                    komentar:reviewComment,
-                    ocena:ratingScore
+                    ime: currentUser!.firstName,
+                    komentar: reviewComment,
+                    ocena: ratingScore
                 }
             ]
         }
@@ -97,6 +107,6 @@ export class Profile {
 
     closeOverlay() {
         this.showOverlay = false
-        this.showReviewOverlay=false
+        this.showReviewOverlay = false
     }
 }

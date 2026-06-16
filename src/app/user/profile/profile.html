@@ -51,6 +51,7 @@
         </thead>
         <tbody>
             @for(order of orderService.orders(); track order.orderId){
+            @if (order.userEmail==currentUser()) {
             <tr>
                 <td>#{{order.orderId}}</td>
                 <td>{{order.createdAt|date: 'dd.MM.yyyy HH:mm:ss'}}</td>
@@ -69,7 +70,8 @@
                     }
                 </td>
             </tr>
-            }@empty {
+            }
+            }@if(!hasOrders()) {
             <tr>
                 <td colspan="4" style="text-align: center; padding: 20px; color: #888;">
                     You haven't placed any orders yet.

@@ -1,6 +1,7 @@
 import { Injectable, signal, computed, effect, untracked, inject } from "@angular/core"
 import { ToyModel } from "../models/toy.model"
 import { OrderService } from "./order.service"
+import { UserModel } from "../models/user.model"
 
 
 export interface CartItem {
@@ -21,6 +22,7 @@ export class CartService {
     private cartItems = signal<CartItem[]>(this.loadCart())
     items = this.cartItems.asReadonly()
 
+
     totalPrice = computed(() =>
         this.cartItems().reduce((acc, item) => acc + (item.toy.price * item.quantity), 0)
     )
@@ -39,7 +41,9 @@ export class CartService {
 
         if (currentItems.length === 0) return
 
-        this.orderService.createOrder(currentItems, total)
+        const currentUser=localStorage.getItem("active")
+
+        this.orderService.createOrder(currentItems, total, currentUser as string)
         this.clearCart()
     }
 

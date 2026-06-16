@@ -154,6 +154,7 @@ option {
     align-items: center;
     animation: fadeIn 0.3s ease;
     overflow: hidden;
+    z-index: 100;
 }
 
 .detail {
